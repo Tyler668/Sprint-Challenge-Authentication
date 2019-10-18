@@ -40,11 +40,19 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 - [ ] What is the purpose of using _sessions_?
 
+Sessions are used to persist user data for the duration of the time they'll be using a site, without them we wouldn't remain signed in, authenticated, etc the moment we reload a page or nabigate to another.
+
 - [ ] What does bcrypt do to help us store passwords in a secure manner.
+
+bcryptjs encrypts user information by putting them through a sort of scrambler that will run to a specified complexity. Users can insist on a number of 're-scrambles' which will both increase computing time, and security. This scales exponentially by powers of two and is a way to increase resistance to brute force attacks as is needed over time.
 
 - [ ] What does bcrypt do to slow down attackers?
 
+It uses something called 'salt', a random string attached to each instance of encryption meant to eliminate commonalities when the same string or piece of data is encrpyted twice.
+
 - [ ] What are the three parts of the JSON Web Token?
+
+Payload, secret, options
 
 ## Minimum Viable Product
 
