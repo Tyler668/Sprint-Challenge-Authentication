@@ -3,9 +3,6 @@
   before granting access to the next middleware/route handler
 */
 
-
-
-
 const jwt = require('jsonwebtoken');
 const secrets = require('../config/secrets.js')
 module.exports = (req, res, next) => {
@@ -14,6 +11,7 @@ module.exports = (req, res, next) => {
   if (token) {
     jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
       if (err) {
+        res.status(400).json({ message: 'Not authenticated, you shall not pass!' });
       } else {
         req.user = {
           username: decodedToken.username,
@@ -23,6 +21,6 @@ module.exports = (req, res, next) => {
       }
     })
   } else {
-    res.status(400).json({ message: 'No credentials provided, you shall not pass!' });
+    res.status(400).json({ message: 'Not authenticated, you shall not pass!' });
   }
 };
